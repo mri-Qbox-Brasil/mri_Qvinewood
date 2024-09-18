@@ -89,36 +89,80 @@ hexToRgb = function(hex)
     }
 end
 
+-- UpdateMap = function(data)
+--     for k, v in pairs(modelCreated) do
+--         DeleteEntity(v)
+--     end
+--     modelCreated = {}
+--     if not data then return end
+--     local completeText = data[1]
+--     if not completeText then return end
+--     for i=1, #completeText, 1 do
+--         if i > #Config.Coords then
+--             return
+--         end
+--         local letter = completeText:sub(i, 1)
+--         local model = string.format("gg_l_%s", letter)
+--         local coords = Config.Coords[i].coordinate
+--         local heading = Config.Coords[i].heading
+--         model = model
+--         if model ~= " " then
+--             RequestModel(model)
+--             while not HasModelLoaded(model) do
+--                 Wait(1)
+--             end
+
+--             local obj = CreateObject(model, coords, false, false, false)
+--             SetEntityHeading(obj, heading)
+--             table.insert(modelCreated, obj)
+--             SetColorModel(model, "techdevontop", hexToRgb(data[2]))
+--         end
+--     end
+-- end
+
 UpdateMap = function(data)
+    -- Clear existing models
     for k, v in pairs(modelCreated) do
         DeleteEntity(v)
     end
     modelCreated = {}
+
+    -- If no data is provided, exit function
     if not data then return end
     local completeText = data[1]
     if not completeText then return end
-    for i=1, #completeText, 1 do
+
+    -- Iterate through each character in completeText
+    for i = 1, #completeText, 1 do
+        -- If we exceed the available coordinates, exit loop
         if i > #Config.Coords then
             return
         end
-        local string = completeText:sub(i, i)
-        local model = string
+
+        -- Extract the i-th letter
+        local letter = completeText:sub(i, i)
+        local model = string.format("gg_l_%s", letter)
         local coords = Config.Coords[i].coordinate
         local heading = Config.Coords[i].heading
-        model = model
-        if model ~= " " then
+
+        if model ~= "gg_l_ " then
+            -- Request and load model
             RequestModel(model)
             while not HasModelLoaded(model) do
                 Wait(1)
             end
 
+            -- Create the object and set heading
             local obj = CreateObject(model, coords, false, false, false)
             SetEntityHeading(obj, heading)
             table.insert(modelCreated, obj)
+
+            -- Apply color (assuming SetColorModel is a valid function)
             SetColorModel(model, "techdevontop", hexToRgb(data[2]))
         end
     end
 end
+
 
 SetColorModel = function(model, textureName, colorRgb)
     local txd = 'txd_vinewood_sign'
@@ -127,10 +171,10 @@ SetColorModel = function(model, textureName, colorRgb)
     local texture = CreateRuntimeTexture(dict, txn, 4, 4)
     local resolution = GetTextureResolution(txd, txn)
     if(colorRgb.r == 255 and colorRgb.g == 255 and colorRgb.b == 255) then
-        RemoveReplaceTexture("mainTexture", textureName)
+        RemoveReplaceTexture("gg_letras_txd", textureName)
     else
         SetRuntimeTexturePixel(texture, 0, 0, colorRgb.r, colorRgb.g, colorRgb.b, 255)
         CommitRuntimeTexture(texture)
-        AddReplaceTexture("mainTexture", textureName, txd, txn)
+        AddReplaceTexture("gg_letras_txd", textureName, txd, txn)
     end
 end

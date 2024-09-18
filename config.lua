@@ -14,21 +14,23 @@ Config.AuthorizedGroups = {
 }
 
 Config.Locales = {
-    ['vinewood'] = "Vinewood",
-    ['sign'] = "Placa",
-    ['text'] = "Texto",
-    ['color'] = "Cor",
-    ['text_edited'] = "Text alterado!",
-    ['type_text'] = "Vinewood"
+    ['text'] = "Seu texto:",
+    ['color'] = "Cor do seu letreiro:",
+    ['text_edited'] = "Letreiro alterado com sucesso!",
+    ['type_text'] = "MRI QBOX"
 }
 
 Config.FileName = 'textSettings.json'
 
 Config.Coords = {
-    -- {
-    --     coordinate = vector3(654.63, 1212.19, 325.42),
-    --     heading = 343.5
-    -- },
+    {
+        coordinate = vector3(636.75415, 1214.38147, 326.0588),
+        heading = 344.99996948242
+    },
+    {
+        coordinate = vector3(651.8011, 1213.64856, 326.0588),
+        heading = 344.99996948242
+    },
     {
         coordinate = vector3(668.46820000, 1211.08500000, 326.05880000),
         heading = 343.5
@@ -59,6 +61,14 @@ Config.Coords = {
     },
     {
         coordinate = vector3(776.69390000, 1174.89400000, 326.14790000),
+        heading = 344.99996948242
+    },
+    {
+        coordinate = vector3(789.7465, 1169.01782, 326.1479),
+        heading = 344.99996948242
+    },
+    {
+        coordinate = vector3(801.5437, 1163.34619, 326.1479),
         heading = 344.99996948242
     },
 }

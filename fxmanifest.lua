@@ -29,7 +29,6 @@ files {
     'web/img/*.png',
 }
 
-
 data_file 'DLC_ITYP_REQUEST' 'stream/**/*.ytyp'
 
 files {
